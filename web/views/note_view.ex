@@ -5,6 +5,10 @@ defmodule HanksFirstBirthday.NoteView do
     %{notes: Enum.map(notes, &note_json/1)}
   end
 
+  def render("show.json", %{note: note}) do
+    %{note: note_json(note)}
+  end
+
   defp note_json(note) do
     %{
       id: note.id,
