@@ -1,6 +1,5 @@
 defmodule HanksFirstBirthday.NoteControllerTest do
   use HanksFirstBirthday.ConnCase
-
   import HanksFirstBirthday.Factory
 
   test "index/1 renders a list of notes" do

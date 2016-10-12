@@ -1,6 +1,5 @@
 defmodule HanksFirstBirthday.NoteTest do
   use HanksFirstBirthday.ModelCase
-
   alias HanksFirstBirthday.Note
 
   @valid_attrs %{body: "some content", from: "some content"}
