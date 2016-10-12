@@ -9,13 +9,12 @@ defmodule HanksFirstBirthday.NoteView do
     %{note: note_json(note)}
   end
 
-  defp note_json(note) do
+  def note_json(note) do
     %{
-      id: note.id,
-      inserted_at: note.inserted_at,
-      updated_at: note.updated_at,
       from: note.from,
-      body: note.body
+      body: note.body,
+      inserted_at: note.inserted_at,
+      updated_at: note.updated_at
     }
   end
 end
