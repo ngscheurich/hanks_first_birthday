@@ -22,6 +22,6 @@ defmodule HanksFirstBirthday.Router do
   scope "/api", HanksFirstBirthday do
     pipe_through :api
 
-    resources "/notes", V1.NoteController, except: [:new, :edit]
+    resources "/notes", NoteController, except: [:new, :edit]
   end
 end
