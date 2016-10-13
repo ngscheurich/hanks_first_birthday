@@ -1,6 +1,7 @@
 import 'phoenix_html';
 import Vue from 'vue/dist/vue.js';
 import VueResource from 'vue-resource';
+import Dates from 'date-math';
 
 Vue.use(VueResource);
 
@@ -29,7 +30,6 @@ let vm = new Vue({
 
   methods: {
     fetchNotes: function () {
-      console.log('Fetching…');
       this.$http.get('/api/notes').then((res) => {
         this.notes = res.body.notes;
       }, (res) => {
@@ -37,7 +37,6 @@ let vm = new Vue({
       });
     },
     createNote: function () {
-      console.log('Creating…');
       const payload = JSON.stringify(this.payload);
       this.$http.post('/api/notes', payload).then((res) => {
         this.fetchNotes();
@@ -72,3 +71,15 @@ msgButton.addEventListener('click', (e) => {
 }, false);
 modalSubmit.addEventListener('click', toggleModal, false);
 modalClose.addEventListener('click', toggleModal, false);
+
+const daysEl = document.getElementsByClassName('days')[0];
+const bday = new Date('2015-10-25T14:30Z');
+
+function diffDates() {
+  const diff = Dates.day.diff(bday, Date.now());
+  daysEl.innerText = diff;
+}
+
+const intervalID = window.setInterval(diffDates, 500);
+
+diffDates();

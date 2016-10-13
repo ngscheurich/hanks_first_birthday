@@ -5,7 +5,7 @@
     </h1>
   </header>
 
-  <p class="header__days">Today Hank is <span class="days"><%= days_old %></span> days old!</p>
+  <p class="header__days">Today Hank is <span class="days"></span> days old!</p>
 
   <div class="header__buttons">
     <a class="button" href="https://smile.amazon.com/registry/giftlist/14YNC91QJGZT7">View Hank’s wishlist</a>
