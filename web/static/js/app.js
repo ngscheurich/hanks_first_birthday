@@ -17,6 +17,12 @@ let vm = new Vue({
     }
   },
 
+  computed: {
+    reversedNotes: function () {
+      return this.notes.reverse();
+    }
+  },
+
   created: function () {
     this.fetchNotes();
   },
@@ -42,3 +48,27 @@ let vm = new Vue({
     }
   }
 });
+
+const modal = document.getElementsByClassName('modal')[0];
+const modalSubmit = document.getElementsByClassName('modal__submit')[0];
+const modalClose = document.getElementsByClassName('modal__close')[0];
+const modalOverlay = document.getElementsByClassName('modal-overlay')[0];
+const msgButton = document.getElementById('msg-btn');
+
+function toggleModal() {
+  const visClass = 'is-visible';
+  if (modal.classList.contains(visClass)) {
+    modal.classList.remove(visClass);
+    modalOverlay.classList.remove(visClass);
+  } else {
+    modal.classList.add(visClass);
+    modalOverlay.classList.add(visClass);
+  }
+}
+
+msgButton.addEventListener('click', (e) => {
+  e.preventDefault();
+  toggleModal();
+}, false);
+modalSubmit.addEventListener('click', toggleModal, false);
+modalClose.addEventListener('click', toggleModal, false);

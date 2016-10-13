@@ -1,19 +1,34 @@
-<div id="app">
-  Hank is <%= days_old %> days old.
+<div class="info">
+  <header class="header" role="banner">
+    <h1 class="header__title title">
+      Welcome to Hank’s <strong class="title__em">Monstrous</strong> Birthday Website
+    </h1>
+  </header>
 
-  <form v-on:submit.prevent>
-    <input v-model="payload.note.from" type="text" placeholder="From">
-    <input v-model="payload.note.body" type="text" placeholder="Body">
-    <input type="submit" v-on:click="createNote">
-  </form>
+  <p class="header__days">Today Hank is <span class="days"><%= days_old %></span> days old!</p>
 
-  <ul>
-    <li v-for="note in notes">
-      {{ note.body }} - {{ note.from }}
+  <div class="header__buttons">
+    <a class="button" href="https://smile.amazon.com/registry/giftlist/14YNC91QJGZT7">View Hank’s wishlist</a>
+    <a id="msg-btn" class="button button--alt" href="#notes-form">Leave a birthday message</a>
+  </div>
+</div>
+
+<div class="notes">
+  <div class="notes-form modal">
+    <form v-on:submit.prevent>
+      <input v-model="payload.note.from" type="text" placeholder="Your name">
+      <textarea v-model="payload.note.body" placeholder="Your message"></textarea>
+      <input class="modal__submit button" type="submit" v-on:click="createNote">
+      <button class="modal__close notes-form__nvm">Never mind</button>
+    </form>
+  </div>
+
+  <ul class="notes-list">
+    <li class="note notes-list__item" v-for="note in reversedNotes">
+      <p class="note__body">{{ note.body }}</p>
+      <div class="note__from">Love,<br>{{ note.from }}</div>
     </li>
   </ul>
-
-  <hr>
-
-  <pre>{{ $data }}</pre>
 </div>
+
+<div class="modal-overlay"></div>

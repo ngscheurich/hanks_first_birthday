@@ -1,4 +1,281 @@
 @import 'lib/normalize';
+@import url('https://fonts.googleapis.com/css?family=Creepster|Londrina+Solid|Permanent+Marker|Varela+Round');
+
+$color-red: #e34137;
+$color-blue: #54bdbc;
+$color-green: #1b8278;
+$color-orange: #f18127;
+$color-brown: #352011;
+$color-beige: #eae0cf;
+
+html {
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
 
 body {
+  background-image: url('/images/monsters.png');
+  background-size: 90%;
+  color: #222;
+  font-family: 'Varela Round';
+  font-size: 1.1em;
+  line-height: 1.45;
+}
+
+input,
+textarea {
+  border: 1px solid rgba(#000, .2);
+  border-radius: 3px;
+  display: block;
+  font-family: 'Varela Round';
+  margin-bottom: 1rem;
+  padding: 1rem;
+  width: 100%;
+}
+
+input[type=submit] {
+  margin-bottom: 0;
+  width: auto;
+}
+
+textarea {
+  min-height: 200px;
+}
+
+.info {
+  background-color: $color-brown;
+  border-right: 1px solid rgba(#000, .1);
+  box-shadow: 5px 0 5px rgba(#000, .3);
+  color: rgba(#fff, .85);
+  padding-bottom: 2rem;
+  text-align: center;
+}
+
+.header {
+  padding: 3em 0;
+
+  &__days {
+    margin: 0 2rem 2rem;
+
+    .days {
+      color: $color-blue;
+    }
+  }
+
+  &__buttons .button {
+    margin: 1rem auto;
+    width: 80%;
+  }
+}
+
+.button {
+  background-color: $color-red;
+  border: none;
+  border-radius: 3px;
+  color: $color-beige;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 1rem;
+  padding: 1rem;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: transform .2s;
+
+  &:hover {
+    color: $color-beige;
+    transform: scale(1.05);
+  }
+
+  &--alt {
+    background-color: $color-green;
+  }
+}
+
+.title {
+  color: $color-beige;
+  font-family: 'Londrina Solid';
+  font-size: 2rem;
+  font-weight: normal;
+  line-height: 1.2;
+  margin: 0 auto;
+  text-align: center;
+  text-transform: uppercase;
+  width: 70%;
+
+  &__em {
+    display: block;
+    color: $color-orange;
+    font-family: 'Creepster';
+    font-size: 3.4rem;
+    font-weight: normal;
+  }
+}
+
+.notes {
+  padding: 2rem;
+}
+
+.notes-form {
+  background: white;
+  border-radius: 3px;
+  box-shadow: 0 0 10px rgba(#000, .5);
+  padding: 2rem;
+
+  &__title {
+    font-size: 1.6rem;
+    margin-top: 0;
+    text-transform: uppercase;
+  }
+
+  &__nvm {
+    background: none;
+    border: 0;
+    bottom: 2rem;
+    color: rgba(#000, .4);
+    cursor: pointer;
+    font-size: 1rem;
+    padding: 1rem 0;
+    position: absolute;
+    right: 2rem;
+    text-transform: uppercase;
+    transition: color .2s;
+
+    &:hover {
+      color: rgba(#000, .6);
+    }
+  }
+}
+
+.notes-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  &__item {
+    background: white;
+    border-radius: 3px;
+    box-shadow: 0 0 10px rgba(#000, .5);
+    margin-bottom: 1rem;
+    padding: 1rem 2rem 2rem;
+  }
+}
+
+.note {
+  font-family: 'Permanent Marker';
+}
+
+.modal {
+  display: none;
+  left: 50%;
+  min-width: 85%;
+  position: fixed;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+
+  &.is-visible {
+    display: block;
+  }
+}
+
+.modal-overlay {
+  background: rgba(#000, .7);
+  display: none;
+  height: 100%;
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1;
+
+  &.is-visible {
+    display: block;
+  }
+}
+
+@media (min-width: 768px) {
+  body {
+    background-size: 50%;
+    font-size: 1.4em;
+  }
+
+  .info {
+    height: 100vh;
+    left: 0;
+    position: fixed;
+    top: 0;
+    width: 55%;
+  }
+
+  .header {
+    padding: 5rem 0;
+    
+    &__days {
+      margin-bottom: 4rem;
+    }
+
+    &__buttons .button {
+      width: 80%;
+    }
+  }
+
+  .title {
+    font-size: 2.5rem;
+
+    &__em {
+      font-size: 4.2rem;
+    }
+  }
+
+  .notes {
+    float: right;
+    padding: 3rem;
+    width: 45%;
+  }
+
+  .button {
+    font-size: 1.3rem;
+  }
+
+  .modal {
+    min-width: 60%;
+  }
+}
+
+@media (min-width: 1024px) {
+  body {
+    font-size: 1.6em;
+  }
+
+  .info {
+    width: 45%;
+  }
+
+  .header {
+    &__buttons .button {
+      width: 60%;
+    }
+  }
+
+  .title {
+    font-size: 3rem;
+
+    &__em {
+      font-size: 5rem;
+    }
+  }
+
+  .notes {
+    width: 55%;
+  }
+
+  .modal {
+    min-width: 40%;
+  }
 }
