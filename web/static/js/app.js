@@ -4,7 +4,7 @@ import VueResource from 'vue-resource';
 
 Vue.use(VueResource);
 
-const vm = new Vue({
+let vm = new Vue({
   el: '#app',
 
   data: {
